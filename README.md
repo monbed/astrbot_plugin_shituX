@@ -1,6 +1,6 @@
 本人没学过编程，只会用ai
 
-这是一个gal，动漫人物识别插件，使用https://ai.animedb.cn/网站上的api
+这是一个gal，动漫人物识别插件，使用[AnimeTrace](https://ai.animedb.cn/)网站上的api
 
 食用方法:/anime[图片]   /gal[图片]
 
