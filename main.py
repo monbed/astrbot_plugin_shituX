@@ -162,7 +162,7 @@ class AnimeTracePlugin(Star):
             "base64": img_base64,
             "is_multi": 1,
             "model": model,
-            "ai_detect": 0
+            "ai_detect": 1
         }
         
         async with aiohttp.ClientSession() as session:
