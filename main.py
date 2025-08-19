@@ -13,7 +13,7 @@ from io import BytesIO
 from PIL import Image as PILImage
 from astrbot.core.utils.session_waiter import session_waiter, SessionController
 
-@register("animetrace", "deepseekR1", "动漫/Gal图片识别插件", "1.4.4")
+@register("astrbot_plugin_shituX", "gpt-4.1", "动漫/Gal图片识别插件", "1.0.0")
 class AnimeTracePlugin(Star):
     def __init__(self, context: Context):
         super().__init__(context)
@@ -23,13 +23,9 @@ class AnimeTracePlugin(Star):
     async def initialize(self):
         logger.info("动漫/Gal识别插件已加载")
 
-    @filter.command("anime", "动漫图片识别")
+    @filter.command("识图", "识别")
     async def anime_search(self, event: AstrMessageEvent):
-        await self.start_image_listener(event, "pre_stable")
-
-    @filter.command("gal", "GalGame图片识别")
-    async def gal_search(self, event: AstrMessageEvent):
-        await self.start_image_listener(event, "full_game_model_kira")
+        await self.start_image_listener(event, "animetrace_high_beta")
 
     async def start_image_listener(self, event: AstrMessageEvent, model: str):
         initial_image_url = await self.extract_image_from_event(event)
@@ -189,7 +185,7 @@ class AnimeTracePlugin(Star):
         if not characters:
             return "🔍 未识别到具体角色信息"
         
-        model_name = "动漫识别" if model == "pre_stable" else "Gal识别"
+        model_name = "识别"
         emoji = "📺" if model == "pre_stable" else "🎮"
         ai_status = data.get("ai", False)
         ai_flag = "🤖 AI生成" if ai_status else "NO AI"
